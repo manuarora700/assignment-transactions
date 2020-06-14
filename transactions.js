@@ -84,7 +84,8 @@ function updateValues() {
   // ).toFixed(2);
   let total = 0;
   let userBalance = 1000000;
-  let currentUserAmount = transactions.forEach((item) => {
+  console.log(userBalance);
+  transactions.forEach((item) => {
     if (
       item.user.id === JSON.parse(window.localStorage.getItem("currentuser")).id
     ) {
@@ -93,7 +94,7 @@ function updateValues() {
   });
   console.log(total);
 
-  balance.innerText = `$${userBalance - total}`;
+  balance.innerText = `Rs. ${userBalance - total}`;
   // money_plus.innerText = `$${income}`;
   // money_minus.innerText = `$${expense}`;
 }

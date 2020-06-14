@@ -174,7 +174,6 @@ function showImages() {
 }
 
 showImages();
-
 // Init app
 function init() {
   tbody.innerHTML = "";
