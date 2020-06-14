@@ -69,21 +69,31 @@ function addTransaction(e) {
 
 // Update the balance, income and expense
 function updateValues() {
-  const amounts = transactions.map((transaction) => transaction.amount);
+  // const amounts = transactions.map((transaction) => transaction.amount);
 
-  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  // const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
-  const income = amounts
-    .filter((item) => item > 0)
-    .reduce((acc, item) => (acc += item), 0)
-    .toFixed(2);
+  // const income = amounts
+  //   .filter((item) => item > 0)
+  //   .reduce((acc, item) => (acc += item), 0)
+  //   .toFixed(2);
 
-  const expense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
-    -1
-  ).toFixed(2);
+  // const expense = (
+  //   amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+  //   -1
+  // ).toFixed(2);
+  let total = 0;
+  let userBalance = 1000000;
+  let currentUserAmount = transactions.forEach((item) => {
+    if (
+      item.user.id === JSON.parse(window.localStorage.getItem("currentuser")).id
+    ) {
+      total = total + item.amount;
+    }
+  });
+  console.log(total);
 
-  balance.innerText = `$${total}`;
+  balance.innerText = `$${userBalance - total}`;
   // money_plus.innerText = `$${income}`;
   // money_minus.innerText = `$${expense}`;
 }
@@ -128,6 +138,7 @@ function addTransactionDOM(transaction) {
 // Update DOM
 function updateDOM(providedData = transactions) {
   // clear the main div
+
   table.innerHTML = `<thead>
   <tr>
     <th scope="col">#</th>
@@ -139,8 +150,12 @@ function updateDOM(providedData = transactions) {
 </thead>`;
 
   providedData.forEach((item, i) => {
-    const element = document.createElement("tr");
-    element.innerHTML = `
+    let currentuser = JSON.parse(window.localStorage.getItem("currentuser"));
+
+    console.log(currentuser, item);
+    if (currentuser.id === item.user.id) {
+      const element = document.createElement("tr");
+      element.innerHTML = `
   
     <th scope="row">${i + 1}</th>
     <td>${item.date}</td>
@@ -149,7 +164,8 @@ function updateDOM(providedData = transactions) {
     <td>${item.amount}</td>
 
     `;
-    table.appendChild(element);
+      table.appendChild(element);
+    }
   });
 }
 function sorterName(a, b) {

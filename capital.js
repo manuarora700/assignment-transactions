@@ -76,6 +76,42 @@ function addCapitalToDOM(capital) {
   // `;
 
   table.appendChild(item);
+
+  updateDOM();
+}
+
+function updateDOM(providedData = capitals) {
+  // clear the main div
+
+  table.innerHTML = `<thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Preview</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>`;
+
+  providedData.forEach((item, i) => {
+    let currentuser = JSON.parse(window.localStorage.getItem("currentuser"));
+
+    console.log(currentuser, item);
+    if (currentuser.id === item.user.id) {
+      const element = document.createElement("tr");
+      element.innerHTML = `
+  
+    
+    <td>${item.date}</td>
+    <td>${item.documentDescription}</td>
+    <td><a href="#">Preview</td>
+    <td>${item.amount}</td>
+    <td>Pending</td>
+
+    `;
+      table.appendChild(element);
+    }
+  });
 }
 
 // function updateValues() {
