@@ -150,15 +150,17 @@ function updateDOM(providedData = transactions) {
   </tr>
 </thead>`;
 
-  providedData.forEach((item, i) => {
+  let index = 0;
+  providedData.forEach((item) => {
     let currentuser = JSON.parse(window.localStorage.getItem("currentuser"));
 
     console.log(currentuser, item);
     if (currentuser.id === item.user.id) {
+      index++;
       const element = document.createElement("tr");
       element.innerHTML = `
   
-    <th scope="row">${i + 1}</th>
+    <th scope="row">${index}</th>
     <td>${item.date}</td>
     <td>${item.to}</td>
     <td>${item.mode}</td>
@@ -211,11 +213,11 @@ function sortByChoice() {
 
 // filter only Mode
 function filterByMode() {
-  transactions = transactions.filter(
-    (transaction) => transaction.mode === filterChoice.value
-  );
+  temp = [...transactions];
+  console.log(t);
+  temp = temp.filter((transaction) => transaction.mode === filterChoice.value);
 
-  updateDOM();
+  updateDOM(t);
 }
 // Init app
 function init() {
