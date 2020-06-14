@@ -6,9 +6,10 @@ const from = document.getElementById("from");
 const amount = document.getElementById("amount");
 const tbody = document.getElementById("tbody");
 const mode = document.getElementById("mode");
-const sortBtn = document.getElementById("sort");
-const filterBtn = document.getElementById("filterBtn");
+// const sortBtn = document.getElementById("sort");
+// const filterBtn = document.getElementById("filterBtn");
 const filterChoice = document.getElementById("filterChoice");
+const sortChoice = document.getElementById("sortChoice");
 
 // const dummyTransactions = [
 //   { id: 1, text: 'Flower', amount: -20 },
@@ -41,6 +42,7 @@ function addTransaction(e) {
     alert("Please add a to, from and amount");
   } else {
     const date = new Date(Date.now());
+    date.toString();
     const transaction = {
       id: generateID(),
       to: to.value,
@@ -148,7 +150,7 @@ function updateDOM(providedData = transactions) {
     table.appendChild(element);
   });
 }
-function sorter(a, b) {
+function sorterName(a, b) {
   if (a.to < b.to) {
     return -1;
   }
@@ -157,10 +159,32 @@ function sorter(a, b) {
   }
   return 0;
 }
+
+function sorterDate(a, b) {
+  if (a.date < b.date) {
+    return -1;
+  }
+  if (a.date > b.date) {
+    return 1;
+  }
+  return 0;
+}
+
+function sorterAmount(a, b) {
+  if (a.amount < b.amount) {
+    return -1;
+  }
+  if (a.amount > b.amount) {
+    return 1;
+  }
+  return 0;
+}
 // Sort by name
-function sortByName() {
+function sortByChoice() {
   // console.log("Before sorting", transactions);
-  transactions.sort(sorter);
+  if (sortChoice.value === "name") transactions.sort(sorterName);
+  else if (sortChoice.value === "date") transactions.sort(sorterDate);
+  else transactions.sort(sorterAmount);
   // console.log("After sorting", transactions);
 
   updateDOM();
@@ -185,5 +209,8 @@ function init() {
 init();
 
 form.addEventListener("submit", addTransaction);
-sortBtn.addEventListener("click", sortByName);
-filterBtn.addEventListener("click", filterByMode);
+// sortBtn.addEventListener("click", sortByChoice);
+sortChoice.addEventListener("click", sortByChoice);
+filterChoice.addEventListener("click", filterByMode);
+// sortBtn.addEventListener("click", sortByChoice);
+// filterBtn.addEventListener("click", filterByMode);

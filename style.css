@@ -1323,3 +1323,38 @@ body {
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
 }
+
+.form__select {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1rem 1rem;
+  border: none;
+  width: 30%;
+  background-color: #fff;
+  background-color: #f2f2f2;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Pseudo element (a visible thing that isn't really in the DOM).
+      Also needs -ms- */
+}
+.form__select:focus {
+  outline: none;
+  border-bottom: 3px solid #55c57a;
+}
+.form__select:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+.form__select::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+.display__inline {
+  display: inline;
+}
