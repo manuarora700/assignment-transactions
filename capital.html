@@ -54,6 +54,7 @@
                   placeholder="Enter amount"
                 />
               </div>
+              
 
               <div class="form-group ma-bt-md">
                 <label class="form__label" for="mode">Upload Document</label>
@@ -72,6 +73,10 @@
 
               </div>
             </form>
+            <button id="upload-dialog">Choose PDF</button>
+            <input type="file" id="pdf-file" accept="application/pdf" style="display:none" />
+            <div id="pdf-loader" style="display:none">Loading Preview ..</div>
+            <canvas id="pdf-preview" width="150" style="display:none"></canvas>
           </div>
         </div>
         <div class="user-view__content">
@@ -118,5 +123,7 @@
     <script src="capital.js"></script>
     <script src="header.js"></script>
     <script src="script.js"></script>
+    <script src="pdf.js"></script>
+    <script src="pdf.worker.js"></script>
   </body>
 </html>
