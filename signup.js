@@ -4,9 +4,19 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const passwordConfirm = document.getElementById("passwordConfirm");
 
+const localStorageUsers = JSON.parse(localStorage.getItem("users"));
+
+let users = localStorage.getItem("users") !== null ? localStorageUsers : [];
+
+function updateLocalStorage() {
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+function setCurrentUser() {}
+
 // Redirection
 function redirect() {
-  window.location = "https://127.0.0.1/transactions.html";
+  window.location = "/login.html";
 }
 // Show input error message
 function showError(input, message) {
@@ -81,6 +91,40 @@ function checkPasswordsMatch(input1, input2) {
 function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
+
+function signup() {
+  if (
+    name.value.trim() === "" ||
+    email.value.trim() === "" ||
+    password.value.trim() === "" ||
+    password.value.trim() === ""
+  ) {
+    alert("Please add a to, from and amount");
+  } else if (password.value.trim() !== passwordConfirm.value.trim()) {
+    alert("Passwords donot match!");
+  } else {
+    console.log("Generating user now");
+    const user = {
+      id: generateID(),
+      name: name.value,
+      email: email.value,
+      password: password.value,
+      passwordConfirm: passwordConfirm.value,
+    };
+
+    users.push(user);
+
+    updateLocalStorage();
+  }
+
+  redirect();
+}
+
+// Generate random ID
+function generateID() {
+  return Math.floor(Math.random() * 100000000);
+}
+
 // Event listeners
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -90,5 +134,6 @@ form.addEventListener("submit", function (e) {
   checkLength(password, 6, 25);
   checkEmail(email);
   checkPasswordsMatch(password, passwordConfirm);
+  signup();
   // redirect();
 });

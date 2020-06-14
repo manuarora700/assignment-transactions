@@ -50,6 +50,7 @@ function addTransaction(e) {
       amount: +amount.value,
       mode: mode.value,
       date: date,
+      user: JSON.parse(localStorage.getItem("currentuser")),
     };
 
     transactions.push(transaction);
@@ -122,6 +123,7 @@ function addTransactionDOM(transaction) {
   // `;
 
   table.appendChild(item);
+  updateDOM();
 }
 // Update DOM
 function updateDOM(providedData = transactions) {
@@ -209,8 +211,5 @@ function init() {
 init();
 
 form.addEventListener("submit", addTransaction);
-// sortBtn.addEventListener("click", sortByChoice);
 sortChoice.addEventListener("click", sortByChoice);
 filterChoice.addEventListener("click", filterByMode);
-// sortBtn.addEventListener("click", sortByChoice);
-// filterBtn.addEventListener("click", filterByMode);

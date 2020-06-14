@@ -30,7 +30,7 @@ function addCapital(e) {
       id: generateID(),
       documentDescription: documentDescription.value,
       amount: amount.value,
-
+      user: JSON.parse(localStorage.getItem("currentuser")),
       date: date,
     };
 

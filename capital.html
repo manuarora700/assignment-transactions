@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Capital</title>
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -16,8 +16,8 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header">
-      <nav class="nav nav--tours">
+    <header class="header" id="header">
+      <!-- <nav class="nav nav--tours">
         <a class="nav__el" href="/">Peach Tree Bank</a>
       </nav>
       <div class="header__logo">
@@ -26,63 +26,80 @@
       <nav class="nav nav--user">
         <a class="nav__el" href="/login.html">Login</a
         ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
-      </nav>
+      </nav> -->
     </header>
-
+    
     <main class="main">
       <div class="user-view">
-        <h3>CAPITAL</h3>
-        <br />
+        <div class="user-view__content">
+          <div class="user-view__form-container">
+            <h2 class="heading-secondary ma-bt-md">Capital</h2>
+            <form class="form form-user-data" id="form-upload" enctype="multipart/form-data" method="POST">
+              <div class="form__group">
+                <label class="form__label" for="documentDescription">Document Description</label>
+                <input
+                  class="form__input"
+                  id="documentDescription"
+                  type="text"
+                  placeholder="My details"
+                  required="required"
+                />
+              </div>
+              <div class="form-group ma-bt-md">
+                <label class="form__label" for="amount">Amount</label>
+                <input
+                  class="form__input"
+                  type="number"
+                  id="amount"
+                  placeholder="Enter amount"
+                />
+              </div>
 
-        <form id="form-upload" enctype="multipart/form-data" method="POST">
-          <div class="form-control">
-            <label for="text">Document Description</label>
-            <input type="text" id="documentDescription" placeholder="" />
+              <div class="form-group ma-bt-md">
+                <label class="form__label" for="mode">Upload Document</label>
+                <input type="file" class="form__input" id="image">
+              </div>
+              <!-- <div class="form__group form__photo-upload">
+                <img
+                  class="form__user-photo"
+                  src="img/user.jpg"
+                  alt="User photo"
+                /><a class="btn-text" href="">Choose new photo</a>
+              </div> -->
+              <div class="form__group left">
+                <button class="btn btn--small btn--green">Submit</button>
+                <div id="result"></div>
+
+              </div>
+            </form>
           </div>
+        </div>
+        <div class="user-view__content">
+          <div class="user-view__form-container">
+            
+            <div class="container">
+              <h2 class="heading-secondary ma-bt-md">Your Applications</h2>
+            <br />
+            
+            
+            <br /><br />
+            <table class="table" id="table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Document</th>
+                  <th scope="col">Preview</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
 
-          <div class="form-control">
-            <label for="amount">Amount</label>
-            <input type="number" id="amount" placeholder="Enter amount" />
           </div>
-
-          <div class="form-group">
-            <input type="file" class="form-control" id="image" />
-            <!-- <button class="btn">Upload</button> -->
-          </div>
-          <button class="btn">Submit</button>
-        </form>
-
-        <!-- <form id="form-upload" enctype="multipart/form-data" method="POST">
-          <div class="form-group">
-            <input type="file" class="form-control" id="image" />
-            <button class="btn">Upload</button>
-          </div>
-        </form> -->
-        <!-- <button class="btn btn-danger">Delete</button> -->
-        <div id="result"></div>
-
-        <h3>Your Applications</h3>
-        <ul id="list" class="list">
-          <!-- <li class="minus">
-          Cash <span>-$400</span><button class="delete-btn">x</button>
-        </li> -->
-        </ul>
-
-        <table class="table" id="table">
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Document</th>
-              <th scope="col">Preview</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
+        </div>
       </div>
     </main>
-
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -99,5 +116,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="capital.js"></script>
+    <script src="header.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
