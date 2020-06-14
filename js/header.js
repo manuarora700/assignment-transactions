@@ -7,16 +7,11 @@ if (!currentuser) {
       <nav class="nav nav--tours">
       <a class="nav__el" href="/">Peach Tree Bank</a>
     </nav>
-    <div class="header__logo">
-    <a class="nav__el" href="#">Hello</a>
-    </div>
     <nav class="nav nav--user">
       <a class="nav__el" href="/views/login.html">Login</a
       ><a class="nav__el nav__el--cta" href="/views/signup.html">Signup</a>
     </nav>
 `;
-  console.log("USER NOT THERE");
-  // window.reload();
 } else {
   header.innerHTML = `
   <nav class="nav nav--tours">
@@ -33,6 +28,4 @@ if (!currentuser) {
       </nav>
   
   `;
-  console.log(currentuser);
-  // window.reload();
 }

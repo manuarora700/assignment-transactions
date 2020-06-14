@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
+    <title>Transactions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -12,22 +12,16 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/style.css"
+    />
   </head>
   <body>
     <!-- Header -->
-    <header class="header" id="header">
-      <!-- <nav class="nav nav--tours">
-        <a class="nav__el" href="/">Peach Tree Bank</a>
-      </nav>
-      <div class="header__logo">
-        <img src="/img/logo-white.png" alt="Peach Tree Logo" />
-      </div>
-      <nav class="nav nav--user">
-        <a class="nav__el" href="/login.html">Login</a
-        ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
-      </nav> -->
-    </header>
+    <header class="header" id="header"></header>
     <main class="main">
       <div class="user-view">
         <div class="user-view__content">
@@ -50,7 +44,7 @@
                   class="form__input"
                   id="from"
                   type="text"
-                  placeholder="Amit Shah"
+                  placeholder="Your Name"
                   required="required"
                 />
               </div>
@@ -78,13 +72,6 @@
                   <option value="paytm">PayTM</option>
                 </select>
               </div>
-              <!-- <div class="form__group form__photo-upload">
-                <img
-                  class="form__user-photo"
-                  src="img/user.jpg"
-                  alt="User photo"
-                /><a class="btn-text" href="">Choose new photo</a>
-              </div> -->
               <div class="form__group left">
                 <button class="btn btn--small btn--green">Submit</button>
               </div>
@@ -93,32 +80,28 @@
         </div>
         <div class="user-view__content">
           <div class="user-view__form-container">
-            
             <div class="container">
               <h2 class="heading-secondary ma-bt-md">Your Transactions</h2>
-            <br />
-            <!-- <button class="btn btn--small btn--green" id="sort">
-              Sort by
-            </button> -->
-            <h4 class="display__inline">Sort by </h4>
-            
-            <select class="form__select" type="select" id="sortChoice"
-              >Filter By
-              <option value="name">Name</option>
-              <option value="date">Date</option>
-              <option value="amount"">Amount</option>
-            </select>
+              <br />
+              <h4 class="display__inline">Sort by</h4>
 
-            <!-- <button class="btn btn-small btn-green" id="filterBtn">FILTER BY!</button> -->
-            <h4 class="display__inline">Filter By </h4>
-            <select type="select" class="form__select"  id="filterChoice"
-              >
-              <option value="Debit Card">Debit Card</option>
-              <option value="Credit Card">Credit Card</option>
-              <option value="paytm">PayTM</option>
-            </select>
+              <select class="form__select" type="select" id="sortChoice"
+                >Filter By
+                <option value="none">None</option>
+                <option value="name">Name</option>
+                <option value="date">Date</option>
+                <option value="amount">Amount</option>
+              </select>
+
+              <h4 class="display__inline">Filter By</h4>
+              <select type="select" class="form__select" id="filterChoice">
+                <option value="none">None</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="paytm">PayTM</option>
+              </select>
             </div>
-            
+
             <br /><br />
             <table class="table" id="table">
               <thead>
@@ -154,6 +137,11 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script>
+      $("table").sortable();
+    </script>
     <script src="/js/transactions.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/script.js"></script>

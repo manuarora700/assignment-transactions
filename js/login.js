@@ -1,19 +1,5 @@
 const formLogin = document.getElementById("form-login");
 
-const hideAlert = () => {
-  const el = document.querySelector(".alert");
-  if (el) el.parentElement.removeChild(el);
-};
-
-const showAlert = (msg) => {
-  hideAlert();
-
-  const markup = `<div class="alert alert--error">${msg}</div> `;
-  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
-
-  window.setTimeout(hideAlert, 5000);
-};
-
 function redirect() {
   window.location = "/views/transactions.html";
 }
@@ -38,6 +24,7 @@ function login() {
         JSON.stringify(item)
       );
       flag = false;
+      showAlertSuccess("Logged in successfully");
       return redirect();
     }
   });

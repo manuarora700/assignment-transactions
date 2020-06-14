@@ -12,8 +12,6 @@ function updateLocalStorage() {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
-function setCurrentUser() {}
-
 // Redirection
 function redirect() {
   window.location = "/views/login.html";
@@ -25,20 +23,6 @@ function showError(input, message) {
   const small = formControl.querySelector("small");
   small.innerText = message;
 }
-
-const hideAlert = () => {
-  const el = document.querySelector(".alert");
-  if (el) el.parentElement.removeChild(el);
-};
-
-const showAlert = (msg) => {
-  hideAlert();
-
-  const markup = `<div class="alert alert--error">${msg}</div> `;
-  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
-
-  window.setTimeout(hideAlert, 5000);
-};
 
 // Show success outline message
 function showSuccess(input) {
@@ -110,7 +94,6 @@ function signup() {
     showAlert("Passwords donot match!");
     return;
   } else {
-    console.log("Generating user now");
     const user = {
       id: generateID(),
       name: name.value,

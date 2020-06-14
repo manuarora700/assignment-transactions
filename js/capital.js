@@ -19,7 +19,7 @@ function addCapital(e) {
   e.preventDefault();
 
   if (documentDescription.value.trim() === "" || amount.value.trim() === "") {
-    alert("Please add document description / amount");
+    showAlert("Please add document description / amount");
   } else {
     const date = new Date(Date.now());
 
@@ -33,22 +33,19 @@ function addCapital(e) {
     };
 
     capitals.push(capital);
-
-    console.log(capitals);
-
     addCapitalToDOM(capital);
-
-    // updateValues();
 
     updateLocalStorage();
 
     documentDescription.value = "";
     amount.value = "";
+
+    showAlertSuccess("Data updated successfully");
   }
 }
 
 function addCapitalToDOM(capital) {
-  // Get sign
+  // Get sign -- implement later
   // const sign = transaction.amount < 0 ? "-" : "+";
   const length = capitals.length;
 
@@ -59,8 +56,6 @@ function addCapitalToDOM(capital) {
   // Add class based on value
   // item.classList.add(transaction.amount < 0 ? "minus" : "plus");
   item.innerHTML = `
-  
-      
       <td>${capital.date}</td>
       <td>${capital.documentDescription}</td>
       <td><button class="btn btn--small btn--green "onclick="showPDF(${capital.blob})">Preview</button></td>
@@ -89,7 +84,6 @@ function updateDOM(providedData = capitals) {
   providedData.forEach((item, i) => {
     let currentuser = JSON.parse(window.localStorage.getItem("currentuser"));
 
-    console.log("Type of _OBJECT_URL", typeof item.blob);
     if (currentuser.id === item.user.id) {
       const element = document.createElement("tr");
       element.innerHTML = `
@@ -124,7 +118,6 @@ var _OBJECT_URL;
 
 // load the PDF
 function showPDF(pdf_url) {
-  console.log("pdf url type", typeof pdf_url);
   PDFJS.getDocument({ url: pdf_url })
     .then(function (pdf_doc) {
       _PDF_DOC = pdf_doc;
@@ -203,10 +196,8 @@ document.querySelector("#pdf-file").addEventListener("change", function (e) {
 
   // object url of PDF
   _OBJECT_URL = URL.createObjectURL(file);
-  console.log("typeof object url", typeof _OBJECT_URL);
 
   // store blog in localStorage with current user
-  console.log("_OBJECT_URL", _OBJECT_URL);
   // send the object url of the pdf to the PDF preview function -- but we'll show in submit button
   showPDF(_OBJECT_URL);
 });

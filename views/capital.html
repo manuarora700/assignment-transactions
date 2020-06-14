@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
+    <title>Capitals</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -17,16 +17,6 @@
   <body>
     <!-- Header -->
     <header class="header" id="header">
-      <!-- <nav class="nav nav--tours">
-        <a class="nav__el" href="/">Peach Tree Bank</a>
-      </nav>
-      <div class="header__logo">
-        <img src="/img/logo-white.png" alt="Peach Tree Logo" />
-      </div>
-      <nav class="nav nav--user">
-        <a class="nav__el" href="/login.html">Login</a
-        ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
-      </nav> -->
     </header>
     
     <main class="main">
@@ -54,24 +44,14 @@
                   placeholder="Enter amount"
                 />
               </div>
-              
-
-              <!-- <div class="form-group ma-bt-md">
-                <label class="form__label" for="mode">Upload Document</label>
-                <input type="file" class="form__input" id="image">
-              </div> -->
-              
               <div class="form-group ma-bt-md">
-
-                
+                <label class="form__label">Upload Document</label>
+                <button id="upload-dialog" class="btn btn--small btn--green">Choose PDF</button>
+                <input type="file" class="form__input" id="pdf-file" accept="application/pdf" style="display:none" />
+                <div id="pdf-loader" style="display:none">Loading Preview ..</div>
+                <canvas id="pdf-preview" width="150" style="display:none"></canvas>
               </div>
-              <!-- <div class="form__group form__photo-upload">
-                <img
-                  class="form__user-photo"
-                  src="img/user.jpg"
-                  alt="User photo"
-                /><a class="btn-text" href="">Choose new photo</a>
-              </div> -->
+             
               <div class="form__group left">
                 <button class="btn btn--small btn--green">Submit</button>
                 <div id="result"></div>
@@ -79,11 +59,7 @@
               </div>
             </form>
             <br>
-            <label class="form__label">Upload Document</label>
-                <button id="upload-dialog" class="btn btn--small btn--green">Choose PDF</button>
-                <input type="file" class="form__input" id="pdf-file" accept="application/pdf" style="display:none" />
-                <div id="pdf-loader" style="display:none">Loading Preview ..</div>
-                <canvas id="pdf-preview" width="150" style="display:none"></canvas>
+            
 
           </div>
         </div>
