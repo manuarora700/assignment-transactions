@@ -11,8 +11,8 @@ if (!currentuser) {
     <a class="nav__el" href="#">Hello</a>
     </div>
     <nav class="nav nav--user">
-      <a class="nav__el" href="/login.html">Login</a
-      ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
+      <a class="nav__el" href="/views/login.html">Login</a
+      ><a class="nav__el nav__el--cta" href="/views/signup.html">Signup</a>
     </nav>
 `;
   console.log("USER NOT THERE");
@@ -27,9 +27,9 @@ if (!currentuser) {
       </div>
       <nav class="nav nav--user">
         
-        <button class="nav__el" href="/transactions.html" onclick="logout()">logout</button>
-        <a class="nav__el nav__el--cta" href="/transactions.html">Transactions</a>
-        <a class="nav__el nav__el--cta" href="/capital.html">Capital</a>
+        <button class="nav__el" href="/views/transactions.html" onclick="logout()">logout</button>
+        <a class="nav__el nav__el--cta" href="/views/transactions.html">Transactions</a>
+        <a class="nav__el nav__el--cta" href="/views/capital.html">Capital</a>
       </nav>
   
   `;

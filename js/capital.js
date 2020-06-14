@@ -18,23 +18,23 @@ function updateLocalStorage() {
 function addCapital(e) {
   e.preventDefault();
 
-  if (
-    documentDescription.value.trim() === "" ||
-    amount.value.trim() === "" ||
-    document.getElementById("image").files[0] === undefined
-  ) {
+  if (documentDescription.value.trim() === "" || amount.value.trim() === "") {
     alert("Please add document description / amount");
   } else {
     const date = new Date(Date.now());
+
     const capital = {
       id: generateID(),
       documentDescription: documentDescription.value,
       amount: amount.value,
       user: JSON.parse(localStorage.getItem("currentuser")),
       date: date,
+      blob: _OBJECT_URL,
     };
 
     capitals.push(capital);
+
+    console.log(capitals);
 
     addCapitalToDOM(capital);
 
@@ -63,17 +63,10 @@ function addCapitalToDOM(capital) {
       
       <td>${capital.date}</td>
       <td>${capital.documentDescription}</td>
-      <td><a href="#">Preview</a></td>
+      <td><button class="btn btn--small btn--green "onclick="showPDF(${capital.blob})">Preview</button></td>
       <td>${capital.amount}</td>
       <td>Pending</td>
   `;
-  // item.innerHTML = `
-  //   ${transaction.text} <span>${sign}${Math.abs(
-  //   transaction.amount
-  // )}</span> <button class="delete-btn" onclick="removeTransaction(${
-  //   transaction.id
-  // })">x</button>
-  // `;
 
   table.appendChild(item);
 
@@ -96,7 +89,7 @@ function updateDOM(providedData = capitals) {
   providedData.forEach((item, i) => {
     let currentuser = JSON.parse(window.localStorage.getItem("currentuser"));
 
-    console.log(currentuser, item);
+    console.log("Type of _OBJECT_URL", typeof item.blob);
     if (currentuser.id === item.user.id) {
       const element = document.createElement("tr");
       element.innerHTML = `
@@ -104,7 +97,7 @@ function updateDOM(providedData = capitals) {
     
     <td>${item.date}</td>
     <td>${item.documentDescription}</td>
-    <td><a href="#">Preview</td>
+    <td><button class="btn btn--preview" onclick="showPDF(${item.blob})">Preview</button></td>
     <td>${item.amount}</td>
     <td>Pending</td>
 
@@ -114,66 +107,10 @@ function updateDOM(providedData = capitals) {
   });
 }
 
-// function updateValues() {
-//   const amounts = capitals.map((capital) => capital.amount);
-
-//   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
-
-//   const income = amounts
-//     .filter((item) => item > 0)
-//     .reduce((acc, item) => (acc += item), 0)
-//     .toFixed(2);
-
-//   const expense = (
-//     amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
-//     -1
-//   ).toFixed(2);
-
-//   balance.innerText = `$${total}`;
-//   // money_plus.innerText = `$${income}`;
-//   // money_minus.innerText = `$${expense}`;
-// }
 // Generate random ID
 function generateID() {
   return Math.floor(Math.random() * 100000000);
 }
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  let reader = new FileReader();
-
-  let name = document.getElementById("image").files[0].name;
-  console.log(name);
-
-  reader.addEventListener("load", function () {
-    if (this.result && localStorage) {
-      window.localStorage.setItem(name, this.result);
-      alert("image stored in local storage");
-      parentDiv.innerHTML = ``;
-      showImages();
-    } else {
-      alert("not successful");
-    }
-  });
-
-  reader.readAsDataURL(document.getElementById("image").files[0]);
-});
-
-function showImages() {
-  // for loop lagalena
-  for (let i = 2; i < window.localStorage.length; i++) {
-    // console.log(window.localStorage);
-    // if (i === "transactions") continue;
-    let res = window.localStorage.getItem(window.localStorage.key(i));
-
-    let image = new Image();
-    image.src = res;
-
-    parentDiv.appendChild(image);
-  }
-}
-
-showImages();
 
 // *****************PDF js work**********************//
 // will hold the PDF handle returned by PDF.JS API
@@ -187,6 +124,7 @@ var _OBJECT_URL;
 
 // load the PDF
 function showPDF(pdf_url) {
+  console.log("pdf url type", typeof pdf_url);
   PDFJS.getDocument({ url: pdf_url })
     .then(function (pdf_doc) {
       _PDF_DOC = pdf_doc;
@@ -195,6 +133,8 @@ function showPDF(pdf_url) {
       showPage(1);
 
       // destroy previous object url
+
+      // !UNDO IT
       URL.revokeObjectURL(_OBJECT_URL);
     })
     .catch(function (error) {
@@ -234,7 +174,7 @@ document.querySelector("#upload-dialog").addEventListener("click", function () {
 });
 
 /* when users selects a file */
-document.querySelector("#pdf-file").addEventListener("change", function () {
+document.querySelector("#pdf-file").addEventListener("change", function (e) {
   // user selected PDF
   var file = this.files[0];
 
@@ -263,8 +203,11 @@ document.querySelector("#pdf-file").addEventListener("change", function () {
 
   // object url of PDF
   _OBJECT_URL = URL.createObjectURL(file);
+  console.log("typeof object url", typeof _OBJECT_URL);
 
-  // send the object url of the pdf to the PDF preview function
+  // store blog in localStorage with current user
+  console.log("_OBJECT_URL", _OBJECT_URL);
+  // send the object url of the pdf to the PDF preview function -- but we'll show in submit button
   showPDF(_OBJECT_URL);
 });
 

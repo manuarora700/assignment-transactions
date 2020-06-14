@@ -16,7 +16,7 @@ function setCurrentUser() {}
 
 // Redirection
 function redirect() {
-  window.location = "/login.html";
+  window.location = "/views/login.html";
 }
 // Show input error message
 function showError(input, message) {
@@ -93,15 +93,22 @@ function getFieldName(input) {
 }
 
 function signup() {
+  checkRequired([name, email, password, passwordConfirm]);
+  checkLength(name, 3, 15);
+  checkLength(password, 6, 25);
+  checkEmail(email);
+  checkPasswordsMatch(password, passwordConfirm);
   if (
     name.value.trim() === "" ||
     email.value.trim() === "" ||
     password.value.trim() === "" ||
     password.value.trim() === ""
   ) {
-    alert("Please add a to, from and amount");
+    showAlert("Please add a to, from and amount");
+    return;
   } else if (password.value.trim() !== passwordConfirm.value.trim()) {
-    alert("Passwords donot match!");
+    showAlert("Passwords donot match!");
+    return;
   } else {
     console.log("Generating user now");
     const user = {
@@ -129,11 +136,6 @@ function generateID() {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  checkRequired([name, email, password, passwordConfirm]);
-  checkLength(name, 3, 15);
-  checkLength(password, 6, 25);
-  checkEmail(email);
-  checkPasswordsMatch(password, passwordConfirm);
   signup();
   // redirect();
 });

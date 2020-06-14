@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
   </head>
   <body>
     <!-- Header -->
@@ -34,7 +34,7 @@
         <div class="user-view__content">
           <div class="user-view__form-container">
             <h2 class="heading-secondary ma-bt-md">Capital</h2>
-            <form class="form form-user-data" id="form-upload" enctype="multipart/form-data" method="POST">
+            <form class="form form-user-data" id="form-upload" enctype="multipart/form-data">
               <div class="form__group">
                 <label class="form__label" for="documentDescription">Document Description</label>
                 <input
@@ -56,9 +56,14 @@
               </div>
               
 
-              <div class="form-group ma-bt-md">
+              <!-- <div class="form-group ma-bt-md">
                 <label class="form__label" for="mode">Upload Document</label>
                 <input type="file" class="form__input" id="image">
+              </div> -->
+              
+              <div class="form-group ma-bt-md">
+
+                
               </div>
               <!-- <div class="form__group form__photo-upload">
                 <img
@@ -70,13 +75,14 @@
               <div class="form__group left">
                 <button class="btn btn--small btn--green">Submit</button>
                 <div id="result"></div>
-
               </div>
             </form>
-            <button id="upload-dialog">Choose PDF</button>
-            <input type="file" id="pdf-file" accept="application/pdf" style="display:none" />
-            <div id="pdf-loader" style="display:none">Loading Preview ..</div>
-            <canvas id="pdf-preview" width="150" style="display:none"></canvas>
+            <br>
+            <label class="form__label">Upload Document</label>
+                <button id="upload-dialog" class="btn btn--small btn--green">Choose PDF</button>
+                <input type="file" class="form__input" id="pdf-file" accept="application/pdf" style="display:none" />
+                <div id="pdf-loader" style="display:none">Loading Preview ..</div>
+                <canvas id="pdf-preview" width="150" style="display:none"></canvas>
           </div>
         </div>
         <div class="user-view__content">
@@ -120,10 +126,11 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="capital.js"></script>
-    <script src="header.js"></script>
-    <script src="script.js"></script>
-    <script src="pdf.js"></script>
-    <script src="pdf.worker.js"></script>
+    <script src="/utils/pdf.js"></script>
+    <script src="/utils/pdf.worker.js"></script>
+    <script src="/js/capital.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/script.js"></script>
+
   </body>
 </html>

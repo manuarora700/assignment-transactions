@@ -5,23 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Peach Tree Bank</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/style.css"
+    />
   </head>
   <body>
     <!-- Header -->
-    <header class="header" id="header">
-      <!-- <nav class="nav nav--tours">
-        <a class="nav__el" href="/">Peach Tree Bank</a>
-      </nav>
-      <div class="header__logo">
-        <img src="/img/logo-white.png" alt="Peach Tree Logo" />
+    <header class="header" id="header"></header>
+
+    <!-- Landing page -->
+    <section class="section-header">
+      <div class="header__hero">
+        <div class="header__hero-overlay">&nbsp;</div>
+        <img
+          class="header__hero-img"
+          src="/img/tour-5-cover.jpg"
+          alt="Tour 5"
+        />
       </div>
-      <nav class="nav nav--user">
-        <a class="nav__el" href="/login.html">Login</a
-        ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
-      </nav> -->
-    </header>
-    <script src="script.js"></script>
-    <script src="header.js"></script>
+      <div class="heading-box">
+        <h1 class="heading-primary"><span>Peach Tree Bank</span></h1>
+        <div class="heading-box__group">
+          <div class="heading-box__detail">
+            <svg class="heading-box__icon">
+              <use xlink:href="/img/icons.svg#icon-clock"></use></svg
+            ><span class="heading-box__text"
+              >Instahyre Front-end assignment</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-cta">
+      <div class="cta">
+        <img
+          class="cta__img cta__img--1"
+          src="/img/dummy.jpg"
+          alt="Dummy image"
+        /><img class="cta__img cta__img--2" src="/img/dummy.jpg" alt="" />
+        <div class="cta__content">
+          <h2 class="heading-secondary">Login or Signup to get started</h2>
+          <p class="cta__text">
+            Create transactions, Apply for loans and much more.
+          </p>
+          <button
+            onclick="location.href='/views/signup.html'"
+            class="btn btn--green span-all-rows"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+    </section>
+    <script src="/js/script.js"></script>
+    <script src="/js/header.js"></script>
   </body>
 </html>

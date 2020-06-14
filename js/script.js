@@ -1,7 +1,7 @@
 // const formLogin = document.getElementById("form-login");
 
 function redirect() {
-  window.location = "/transactions.html";
+  window.location = "/views/transactions.html";
 }
 
 // const localStorageUsers = JSON.parse(localStorage.getItem("users"));
