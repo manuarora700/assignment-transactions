@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Peach Tree Bank</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/css/style.css"
+    />
   </head>
   <body>
     <!-- Header -->
+<<<<<<< HEAD:signup.html
     <header class="header" id="header">
       <!-- <nav class="nav nav--tours">
         <a class="nav__el" href="/">Peach Tree Bank</a>
@@ -21,11 +27,24 @@
         ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
       </nav> -->
     </header>
-    <!-- Login Form -->
+=======
+    <header class="header" id="header"></header>
+>>>>>>> morefeatures:views/signup.html
+    <!-- signup Form -->
     <main class="main">
       <div class="login-form">
-        <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
-        <form class="form form-login" id="form-login">
+        <h2 class="heading-secondary ma-bt-lg">Sign up for an account</h2>
+        <form class="form form-signup" id="form-signup">
+          <div class="form__group">
+            <label class="form__label" for="name">Name</label
+            ><input
+              class="form__input"
+              id="name"
+              type="text"
+              placeholder="Manu Arora"
+              required="required"
+            />
+          </div>
           <div class="form__group">
             <label class="form__label" for="email">Email address</label
             ><input
@@ -47,14 +66,30 @@
               minlength="8"
             />
           </div>
+          <div class="form__group ma-bt-md">
+            <label class="form__label" for="passwordConfirm"
+              >Confirm Password</label
+            ><input
+              class="form__input"
+              id="passwordConfirm"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+            />
+          </div>
           <div class="form__group">
-            <button class="btn btn--green" onClick="login()">Login</button>
+            <button class="btn btn--green">Signup</button>
           </div>
         </form>
       </div>
     </main>
-    <script src="script.js"></script>
+<<<<<<< HEAD:signup.html
+    <script src="signup.js"></script>
     <script src="header.js"></script>
-    <script src="login.js"></script>
+=======
+    <script src="/js/signup.js"></script>
+    <script src="/js/header.js"></script>
+>>>>>>> morefeatures:views/signup.html
   </body>
 </html>

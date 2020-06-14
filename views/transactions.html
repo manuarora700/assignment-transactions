@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
   </head>
   <body>
     <!-- Header -->
@@ -28,23 +28,33 @@
         ><a class="nav__el nav__el--cta" href="/signup.html">Signup</a>
       </nav> -->
     </header>
-    
     <main class="main">
       <div class="user-view">
         <div class="user-view__content">
           <div class="user-view__form-container">
-            <h2 class="heading-secondary ma-bt-md">Capital</h2>
-            <form class="form form-user-data" id="form-upload" enctype="multipart/form-data" method="POST">
+            <h2 class="heading-secondary ma-bt-md">Add new transaction</h2>
+            <form class="form form-user-data" id="form">
               <div class="form__group">
-                <label class="form__label" for="documentDescription">Document Description</label>
+                <label class="form__label" for="name">To</label>
                 <input
                   class="form__input"
-                  id="documentDescription"
+                  id="to"
                   type="text"
-                  placeholder="My details"
+                  placeholder="Narendra Modi"
                   required="required"
                 />
               </div>
+              <div class="form__group ma-bt-md">
+                <label class="form__label" for="email">From</label>
+                <input
+                  class="form__input"
+                  id="from"
+                  type="text"
+                  placeholder="Amit Shah"
+                  required="required"
+                />
+              </div>
+
               <div class="form-group ma-bt-md">
                 <label class="form__label" for="amount">Amount</label>
                 <input
@@ -56,8 +66,17 @@
               </div>
 
               <div class="form-group ma-bt-md">
-                <label class="form__label" for="mode">Upload Document</label>
-                <input type="file" class="form__input" id="image">
+                <label class="form__label" for="mode">Payment mode</label>
+                <select
+                  class="form__input"
+                  type="select"
+                  id="mode"
+                  placeholder="Enter mode"
+                >
+                  <option value="Credit Card">Credit Card</option>
+                  <option value="Debit Card">Debit Card</option>
+                  <option value="paytm">PayTM</option>
+                </select>
               </div>
               <!-- <div class="form__group form__photo-upload">
                 <img
@@ -68,39 +87,54 @@
               </div> -->
               <div class="form__group left">
                 <button class="btn btn--small btn--green">Submit</button>
-                <div id="result"></div>
-                  
               </div>
             </form>
-<!--             
-            <button id="upload-dialog">Choose PDF</button>
-            <input type="file" id="pdf-file" accept="application/pdf" style="display:none" />
-            <div id="pdf-loader" style="display:none">Loading Preview ..</div>
-            <canvas id="pdf-preview" width="150" style="display:none"></canvas> -->
           </div>
         </div>
         <div class="user-view__content">
           <div class="user-view__form-container">
             
             <div class="container">
-              <h2 class="heading-secondary ma-bt-md">Your Applications</h2>
+              <h2 class="heading-secondary ma-bt-md">Your Transactions</h2>
             <br />
+            <!-- <button class="btn btn--small btn--green" id="sort">
+              Sort by
+            </button> -->
+            <h4 class="display__inline">Sort by </h4>
             
+            <select class="form__select" type="select" id="sortChoice"
+              >Filter By
+              <option value="name">Name</option>
+              <option value="date">Date</option>
+              <option value="amount"">Amount</option>
+            </select>
+
+            <!-- <button class="btn btn-small btn-green" id="filterBtn">FILTER BY!</button> -->
+            <h4 class="display__inline">Filter By </h4>
+            <select type="select" class="form__select"  id="filterChoice"
+              >
+              <option value="Debit Card">Debit Card</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="paytm">PayTM</option>
+            </select>
+            </div>
             
             <br /><br />
             <table class="table" id="table">
               <thead>
                 <tr>
                   <th scope="col">Date</th>
-                  <th scope="col">Document</th>
-                  <th scope="col">Preview</th>
+                  <th scope="col">Beneficiary Name</th>
+                  <th scope="col">Payment mode</th>
                   <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody id="tbody"></tbody>
             </table>
 
+            <h4 class="heading-secondary ma-bt-md">
+              Your Balance: <span id="balance">Rs 0.00</span>
+            </h4>
           </div>
         </div>
       </div>
@@ -120,12 +154,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="capital.js"></script>
-    <script src="header.js"></script>
-    <script src="script.js"></script>
-    <script src="pdf.js"></script>
-    <script src="pdf.worker.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.207/pdf.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.207/pdf.worker.js"></script> -->
+    <script src="/js/transactions.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>

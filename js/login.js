@@ -1,7 +1,21 @@
 const formLogin = document.getElementById("form-login");
 
+const hideAlert = () => {
+  const el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+const showAlert = (msg) => {
+  hideAlert();
+
+  const markup = `<div class="alert alert--error">${msg}</div> `;
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+
+  window.setTimeout(hideAlert, 5000);
+};
+
 function redirect() {
-  window.location = "/transactions.html";
+  window.location = "/views/transactions.html";
 }
 
 const localStorageUsers = JSON.parse(localStorage.getItem("users"));
@@ -28,7 +42,7 @@ function login() {
     }
   });
 
-  if (flag) alert("Email or password is incorrect");
+  if (flag) showAlert("Email or password is incorrect");
   // sessionStorage.setItem("login", `{email: ${email}, password: ${password}`);
 }
 
