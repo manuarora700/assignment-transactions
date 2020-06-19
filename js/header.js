@@ -5,7 +5,7 @@ const currentuser = JSON.parse(localStorage.getItem("currentuser"));
 if (!currentuser) {
   header.innerHTML = `
       <nav class="nav nav--tours">
-      <a class="nav__el" href="/">Peach Tree Bank</a>
+      <a class="nav__el" href="/">Mango Tree Bank</a>
     </nav>
     <nav class="nav nav--user">
       <a class="nav__el" href="/views/login.html">Login</a
@@ -15,7 +15,7 @@ if (!currentuser) {
 } else {
   header.innerHTML = `
   <nav class="nav nav--tours">
-        <a class="nav__el" href="/">Peach Tree Bank</a>
+        <a class="nav__el" href="/">Mango Tree Bank</a>
       </nav>
       <div class="header__logo">
       <a class="nav__el" href="#">Hello,  ${currentuser.name}</a>

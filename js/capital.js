@@ -58,7 +58,6 @@ function addCapitalToDOM(capital) {
   item.innerHTML = `
       <td>${capital.date}</td>
       <td>${capital.documentDescription}</td>
-      <td><button class="btn btn--small btn--green "onclick="showPDF(${capital.blob})">Preview</button></td>
       <td>${capital.amount}</td>
       <td>Pending</td>
   `;
@@ -75,7 +74,6 @@ function updateDOM(providedData = capitals) {
       <tr>
         <th scope="col">Date</th>
         <th scope="col">Description</th>
-        <th scope="col">Preview</th>
         <th scope="col">Amount</th>
         <th scope="col">Status</th>
       </tr>
@@ -91,7 +89,6 @@ function updateDOM(providedData = capitals) {
     
     <td>${item.date}</td>
     <td>${item.documentDescription}</td>
-    <td><button class="btn btn--preview" onclick="showPDF(${item.blob})">Preview</button></td>
     <td>${item.amount}</td>
     <td>Pending</td>
 
