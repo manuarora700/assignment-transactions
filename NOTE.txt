@@ -1,2 +1,0 @@
-Git is just used for version control (Basically I used it for branching to try out some features without disturbing the rest of the project)
-The project is not uploaded on GitHub.
